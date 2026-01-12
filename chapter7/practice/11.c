@@ -69,7 +69,7 @@ double get_weight()
     double w; // weight
     int status = scanf("%lf", &w);
     while (getchar() != '\n');
-    while (status != 1 && w < 0)
+    while (status != 1 ||  w < 0)
     {
         while (getchar() != '\n')
             ;
@@ -91,7 +91,7 @@ int main(void)
     double discount = 0;
     double freight = 0;
     double money_after_discount = 0;
-    for (int i; i < 3; i++)
+    for (int i = 0; i < 3; i++)
     {
         w_list[i] = 0;
         money_of_goods[i] = 0;
@@ -122,7 +122,7 @@ int main(void)
             break;
         }
         w_list[index] += w;
-        money_of_goods[index] += price_list[index] * w_list[index];
+        money_of_goods[index] = price_list[index] * w_list[index];
         // 订单总重和总价
         for (int i = 0; i < 3; i++)
         {
@@ -136,49 +136,43 @@ int main(void)
         freight = calc_freight(w_sum);
         // 优惠后总价
         money_after_discount = order_money_sum - discount + freight;
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 60; i++)
             putchar('-');
         putchar('\n');
-        printf("|当前订单：|\t\t|\n");
-        for (int i = 0; i < 30; i++)
+        printf("| %-44s |\n", "当前订单：");
+        for (int i = 0; i < 60; i++)
             putchar('-');
         putchar('\n');
-        printf("|\t品名\t|\t洋蓟\t|\t甜菜\t|\t胡萝卜\t|\n");
-        for (int i = 0; i < 30; i++)
+        printf("| %-14s | %-10s | %-10s | %-10s |\n", "品名", "洋蓟", "甜菜", "胡萝卜");
+        for (int i = 0; i < 60; i++)
             putchar('-');
         putchar('\n');
-        printf("|\t单价\t|\t%.2f\t|\t%.2f\t|\t%.2f\t|\n", PRICE_A, PRICE_B, PRICE_C);
-        for (int i = 0; i < 30; i++)
+        printf("| %-14s | %10.2f | %10.2f | %10.2f |\n", "单价", PRICE_A, PRICE_B, PRICE_C);
+        for (int i = 0; i < 60; i++)
             putchar('-');
         putchar('\n');
-        printf("|\t计重\t|\t%.2f\t|\t%.2f\t|\t%.2f\t|\n", w_list[0], w_list[1], w_list[2]);
-        for (int i = 0; i < 30; i++)
+        printf("| %-14s | %10.2f | %10.2f | %10.2f |\n", "计重", w_list[0], w_list[1], w_list[2]);
+        for (int i = 0; i < 60; i++)
             putchar('-');
         putchar('\n');
-        printf("|\t费用\t|\t%.2f\t|\t%.2f\t|\t%.2f\t|\n", money_of_goods[0], money_of_goods[1], money_of_goods[2]);
-        for (int i = 0; i < 30; i++)
+        printf("| %-14s | %10.2f | %10.2f | %10.2f |\n", "费用", money_of_goods[0], money_of_goods[1], money_of_goods[2]);
+        for (int i = 0; i < 60; i++)
             putchar('-');
         putchar('\n');
-        printf("|\t订单总费用：\t|\t%.2f\t|\n", order_money_sum);
-        for (int i = 0; i < 30; i++)
+        printf("| %-14s | %30.2f |\n", "订单总费用：", order_money_sum);
+        for (int i = 0; i < 60; i++)
             putchar('-');
         putchar('\n');
-        printf("|\t折扣：\t|\t%.2f\t|\n", discount);
-        for (int i = 0; i < 30; i++)
+        printf("| %-14s | %30.2f |\n", "折扣：", discount);
+        for (int i = 0; i < 60; i++)
             putchar('-');
         putchar('\n');
-        for (int i = 0; i < 30; i++)
+        printf("| %-14s | %30.2f |\n", "运费：", freight);
+        for (int i = 0; i < 60; i++)
             putchar('-');
         putchar('\n');
-        printf("|\t运费：\t|\t%.2f\t|\n", freight);
-        for (int i = 0; i < 30; i++)
-            putchar('-');
-        putchar('\n');
-        for (int i = 0; i < 30; i++)
-            putchar('-');
-        putchar('\n');
-        printf("|\t总计：\t|\t%.2f\t|\n", money_after_discount);
-        for (int i = 0; i < 30; i++)
+        printf("| %-14s | %30.2f |\n", "总计：", money_after_discount);
+        for (int i = 0; i < 60; i++)
             putchar('-');
         putchar('\n');
         putchar('\n');
