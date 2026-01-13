@@ -1,0 +1,6 @@
+aroot@DESKTOP-H75TK46:~/code/github/cprimerplus/chapter8/practice# cd "/root/code/github/cprimerplus/chapter8/practice/" && gcc 2.c -o 2.out && ./2.out
+H
+root@DESKTOP-H75TK46:~/code/github/cprimerplus/chapter8/practice# cd "/root/code/github/cprimerplus/chapter8/practice/" && gcc 3.c -o 3.out && ./3.out
+abc
+def
+count of charaters:8
