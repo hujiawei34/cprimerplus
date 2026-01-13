@@ -1,22 +1,14 @@
 #include <stdio.h>
-void func_a(void)
-{
-    int ch;
-    while ((ch = getchar()) != 'i')
-        putchar(ch);
-}
-void func_b(void)
-{
-    int ch;
-    while((ch=getchar())!= '\n')
-    {
-        putchar(ch++);
-        putchar(++ch);
-    }
+char get_first(){
+    char ch=getchar();
+    while(getchar() !='\n');
+    return ch;
 }
 int main(void)
 {
-    // func_a();
-    func_b();
+    printf("input anything:");
+    char ch=get_first();
+    printf("%c\n",ch);
+
     return 0;
 }
