@@ -1,6 +1,6 @@
 {
   "code-runner.executorMap": {
-    "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt.out -lm && ./$fileNameWithoutExt.out",
+    "c": "cd $dir && gcc $fileName my.c -o $fileNameWithoutExt.out -lm && ./$fileNameWithoutExt.out",
     "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt.out && ./$fileNameWithoutExt.out"
   },
   "code-runner.runInTerminal": true,
