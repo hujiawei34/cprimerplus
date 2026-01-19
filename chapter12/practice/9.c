@@ -9,7 +9,7 @@ int main(void) {
   for (int i = 0; i < w; i++) {
     char *pc; // char point ->a word
     pc = malloc(10 * sizeof(char));//如果没有这个，会有未初始化指针的问题，导致内存泄漏
-    scanf("%s", pc);
+    scanf("%s", pc);//这里不是初始化，因为不知道
     p[i] = pc;
   }
   printf("Here are your words:\n");

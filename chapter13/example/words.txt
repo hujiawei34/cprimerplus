@@ -1,0 +1,8 @@
+new
+file
+is
+ok.
+add
+some
+new
+word
