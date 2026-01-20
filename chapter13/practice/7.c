@@ -11,11 +11,11 @@ int main(int argc, char *argv[]) {
   char *fn1, *fn2;
   fn1 = argv[1];
   fn2 = argv[2];
-  if ((fp1 = fopen(fn1, "rb")) == NULL) {
+  if ((fp1 = fopen(fn1, "r")) == NULL) {
     fprintf(stderr, "Can't open %s\n", fn1);
     exit(EXIT_FAILURE);
   }
-  if ((fp2 = fopen(fn2, "wb")) == NULL) {
+  if ((fp2 = fopen(fn2, "r")) == NULL) {
     fprintf(stderr, "Can't open %s\n", fn2);
     exit(EXIT_FAILURE);
   }
@@ -28,10 +28,25 @@ int main(int argc, char *argv[]) {
     if (fgets(line2, BUFFSIZE, fp2) == NULL)
       file2_end = true;
     if (!file1_end)
-      puts(line1);
+      fputs(line1, stdout);
     if (!file2_end)
-      puts(line2);
+      fputs(line2, stdout);
     if (file1_end && file2_end)
+      break;
+  }
+  puts("===================b===================");
+  rewind(fp1);
+  rewind(fp2);
+  char ch = '\0';
+  while (1) {
+    for (int i = 0; (ch = getc(fp1)) != EOF && ch != '\n'; i++) {
+      fputc(ch, stdout);
+    }
+    for (int i = 0; (ch = getc(fp2)) != EOF && ch != '\n'; i++) {
+      fputc(ch, stdout);
+    }
+    fputc('\n', stdout);
+    if (feof(fp1) && feof(fp2))
       break;
   }
   fclose(fp1);

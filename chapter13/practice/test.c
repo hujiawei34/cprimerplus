@@ -1,5 +1,9 @@
+#include <stddef.h>
 #include <stdio.h>
-int main(void)
-{
-    return 0;
+#include <stdlib.h>
+#include <ctype.h>
+int main(void) {
+  if(isdigit('0'))
+    printf("1 is a digit\n");
+  return 0;
 }
